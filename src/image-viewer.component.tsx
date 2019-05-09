@@ -180,8 +180,8 @@ export default class ImageViewer extends React.Component<Props, State> {
     }
 
     // 如果已知源图片宽高，直接设置为 success
-    if (image.width && image.height){
-      if(this.props.enablePreload && imageLoaded===false){
+    if (image.width && image.height) {
+      if (this.props.enablePreload && imageLoaded === false) {
         Image.prefetch(image.url)
       }
       imageStatus.width = image.width;
@@ -218,8 +218,8 @@ export default class ImageViewer extends React.Component<Props, State> {
   /**
   * 预加载图片
   */
-  public preloadImage = (index: number) =>{
-    if (index < this.state.imageSizes!.length){
+  public preloadImage = (index: number) => {
+    if (index < this.state.imageSizes!.length) {
       this.loadImage(index + 1);
     }
   }
@@ -526,8 +526,8 @@ export default class ImageViewer extends React.Component<Props, State> {
               ...image.props.source
             };
           }
-          if (this.props.enablePreload){
-            this.preloadImage(this.state.currentShowIndex||0)
+          if (this.props.enablePreload) {
+            this.preloadImage(this.state.currentShowIndex || 0)
           }
           return (
             <ImageZoom
@@ -551,7 +551,7 @@ export default class ImageViewer extends React.Component<Props, State> {
               enableDoubleClickZoom={this.props.enableImageZoom}
               doubleClickInterval={this.props.doubleClickInterval}
             >
-              {this!.props!.renderImage!(image.props)}
+              {this!.props!.renderImage!(image.props, image)}
             </ImageZoom>
           );
         case 'fail':
